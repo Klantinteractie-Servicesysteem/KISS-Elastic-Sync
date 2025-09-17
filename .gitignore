@@ -398,3 +398,5 @@ FodyWeavers.xsd
 *.sln.iml
 /.env*.local
 /src/Kiss.Elastic.Sync/Properties/launchSettings.json
+/src/Kiss.Elastic.Sync/.env.local
+/.env.local.oud

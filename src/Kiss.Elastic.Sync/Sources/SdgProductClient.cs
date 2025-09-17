@@ -8,7 +8,8 @@ namespace Kiss.Elastic.Sync.Sources
         private readonly ObjectenClient _objectenClient;
         private readonly string _objecttypeUrl;
 
-        public string Source => "Kennisbank";
+        //public string Source => "Kennisbank";
+        public string Source => "Producten";
 
         public IReadOnlyList<string> CompletionFields { get; } = new[]
         {
@@ -34,18 +35,23 @@ namespace Kiss.Elastic.Sync.Sources
                 string? title = default;
                 string? objectMeta = default;
 
-                if (item.Data.TryGetProperty("vertalingen", out var vertalingenProp) && vertalingenProp.ValueKind == JsonValueKind.Array)
-                {
-                    var vertaling = vertalingenProp[0];
-                    if (vertaling.TryGetProperty("titel", out var titleProp) && titleProp.ValueKind == JsonValueKind.String)
+                //  if (item.Data.TryGetProperty("vertalingen", out var vertalingenProp) && vertalingenProp.ValueKind == JsonValueKind.Array)
+                //  {
+                //var vertaling = vertalingenProp[0];
+                var vertaling = item.Data;
+                    if (vertaling.TryGetProperty("naam", out var titleProp) && titleProp.ValueKind == JsonValueKind.String)
                     {
                         title = titleProp.GetString();
                     }
-                    if (vertaling.TryGetProperty("tekst", out var objectMetaProp) && objectMetaProp.ValueKind == JsonValueKind.String)
+                    if (vertaling.TryGetProperty("samenvatting", out var objectMetaProp) && objectMetaProp.ValueKind == JsonValueKind.String)
                     {
                         objectMeta = objectMetaProp.GetString();
                     }
-                }
+
+                     
+               // }
+
+
 
                 yield return new KissEnvelope(item.Data, title, objectMeta, $"kennisbank_{id.GetString()}");
             }

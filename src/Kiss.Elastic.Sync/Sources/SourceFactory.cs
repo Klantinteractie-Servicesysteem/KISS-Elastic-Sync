@@ -4,8 +4,8 @@
     {
         public static IKissSourceClient CreateClient(string? source) => (source?.ToLowerInvariant()) switch
         {
-            "vac" => GetVacClient(),
-            "smoelenboek" => GetMedewerkerClient(),
+           // "vac" => GetVacClient(),
+           // "smoelenboek" => GetMedewerkerClient(),
             _ => GetProductClient(),
         };
 
