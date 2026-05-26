@@ -1,5 +1,7 @@
 # KISS-Elastic-Sync
 
+> **This repository is closed.** Development has moved to [KISS-frontend](https://github.com/Klantinteractie-Servicesysteem/KISS-frontend).
+
 ## Introduction
 
 KISS offers the posibility to search for information within specific sources. This search functionality is using Elasticsearch. The KISS-Elastic-Sync-tool is used to create the necessary engines in a an Elasticsearch installation.
